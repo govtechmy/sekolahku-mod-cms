@@ -1,2 +1,2 @@
-# sekolahku-cms
+# sekolahku-mod-cms
 Sekolahku CMS
