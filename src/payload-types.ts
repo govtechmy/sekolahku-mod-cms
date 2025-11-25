@@ -166,8 +166,59 @@ export interface Media {
  */
 export interface Siaran {
   id: string;
-  alt: string;
+  /**
+   * The title of the article
+   */
+  title: string;
+  /**
+   * Alternative text for the image (for accessibility)
+   */
+  'image alt': string;
+  /**
+   * Main image for the article
+   */
   image: string | Media;
+  /**
+   * Estimated read time in minutes
+   */
+  readTime: number;
+  /**
+   * Date of the article
+   */
+  articleDate: string;
+  /**
+   * Additional media files attached to the article
+   */
+  attachments?:
+    | {
+        /**
+         * Upload additional files or images
+         */
+        media?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Main content of the article
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Brief description or summary of the article
+   */
   description: {
     root: {
       type: string;
@@ -183,7 +234,10 @@ export interface Siaran {
     };
     [k: string]: unknown;
   };
-  tags?: ('pengumuman' | 'berita') | null;
+  /**
+   * Add a category for this article (will be automatically formatted)
+   */
+  category: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -310,10 +364,20 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "siaran_select".
  */
 export interface SiaranSelect<T extends boolean = true> {
-  alt?: T;
+  title?: T;
+  'image alt'?: T;
   image?: T;
+  readTime?: T;
+  articleDate?: T;
+  attachments?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
+  content?: T;
   description?: T;
-  tags?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
 }
