@@ -166,8 +166,38 @@ export interface Media {
  */
 export interface Siaran {
   id: string;
+  title: string;
   alt: string;
   image: string | Media;
+  /**
+   * Estimated read time in minutes
+   */
+  readTime: number;
+  /**
+   * Date of the article
+   */
+  articleDate: string;
+  attachments?:
+    | {
+        media?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   description: {
     root: {
       type: string;
@@ -183,7 +213,10 @@ export interface Siaran {
     };
     [k: string]: unknown;
   };
-  tags?: ('pengumuman' | 'berita') | null;
+  /**
+   * Add a category for this article (first letter capital, rest lowercase)
+   */
+  category: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -310,10 +343,20 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "siaran_select".
  */
 export interface SiaranSelect<T extends boolean = true> {
+  title?: T;
   alt?: T;
   image?: T;
+  readTime?: T;
+  articleDate?: T;
+  attachments?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
+  content?: T;
   description?: T;
-  tags?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -41,12 +41,13 @@ export const Siaran: CollectionConfig = {
     {
       name: 'attachments',
       type: 'array',
+      required: false,
       fields: [
         {
           name: 'media',
           type: 'upload',
           relationTo: 'media',
-          required: true,
+          required: false,
         },
       ],
     },
@@ -61,18 +62,20 @@ export const Siaran: CollectionConfig = {
       required: true,
     },
     {
-      name: 'tags',
-      type: 'select',
-      options: [
-        {
-          label: 'Pengumuman',
-          value: 'pengumuman',
-        },
-        {
-          label: 'Berita',
-          value: 'berita',
-        },
-      ],
+      name: 'category',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Add a category for this article (first letter capital, rest lowercase)',
+      },
+      validate: (value: string | null | undefined) => {
+        if (!value) return true // Allow empty if not required
+        const regex = /^[A-Z][a-z]*$/
+        if (!regex.test(value)) {
+          return 'Category must start with a capital letter followed by lowercase letters only'
+        }
+        return true
+      },
     },
   ],
   timestamps: true,
