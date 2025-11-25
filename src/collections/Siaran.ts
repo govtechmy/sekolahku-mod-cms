@@ -97,7 +97,11 @@ export const Siaran: CollectionConfig = {
         beforeChange: [
           ({ value }) => {
             if (typeof value === 'string' && value.length > 0) {
-              return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+              // Convert to title case: capitalize first letter of each word
+              return value
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ')
             }
             return value
           },
