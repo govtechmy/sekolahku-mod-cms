@@ -166,8 +166,17 @@ export interface Media {
  */
 export interface Siaran {
   id: string;
+  /**
+   * The title of the article
+   */
   title: string;
-  alt: string;
+  /**
+   * Alternative text for the image (for accessibility)
+   */
+  'image alt': string;
+  /**
+   * Main image for the article
+   */
   image: string | Media;
   /**
    * Estimated read time in minutes
@@ -177,12 +186,21 @@ export interface Siaran {
    * Date of the article
    */
   articleDate: string;
+  /**
+   * Additional media files attached to the article
+   */
   attachments?:
     | {
+        /**
+         * Upload additional files or images
+         */
         media?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Main content of the article
+   */
   content: {
     root: {
       type: string;
@@ -198,6 +216,9 @@ export interface Siaran {
     };
     [k: string]: unknown;
   };
+  /**
+   * Brief description or summary of the article
+   */
   description: {
     root: {
       type: string;
@@ -214,7 +235,7 @@ export interface Siaran {
     [k: string]: unknown;
   };
   /**
-   * Add a category for this article (first letter capital, rest lowercase)
+   * Add a category for this article (will be automatically formatted)
    */
   category: string;
   updatedAt: string;
@@ -344,7 +365,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface SiaranSelect<T extends boolean = true> {
   title?: T;
-  alt?: T;
+  'image alt'?: T;
   image?: T;
   readTime?: T;
   articleDate?: T;
