@@ -7,35 +7,73 @@ export const Siaran: CollectionConfig = {
   },
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'alt',
       type: 'text',
       required: true,
     },
     {
-        name: 'image',
-        type: 'upload',
-        relationTo: 'media',
-        required: true,
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'readTime',
+      type: 'number',
+      required: true,
+      admin: {
+        description: 'Estimated read time in minutes',
       },
-      {
-        name: 'description',
-        type: 'richText',
-        required: true,
+    },
+    {
+      name: 'articleDate',
+      type: 'date',
+      required: true,
+      admin: {
+        description: 'Date of the article',
       },
-      {
-        name: 'tags',
-        type: 'select',
-        options: [
-          {
-            label: 'Pengumuman',
-            value: 'pengumuman',
-          },
-          {
-            label: 'Berita',
-            value: 'berita',
-          },
-        ],
-      },
+    },
+    {
+      name: 'attachments',
+      type: 'array',
+      fields: [
+        {
+          name: 'media',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'content',
+      type: 'richText',
+      required: true,
+    },
+    {
+      name: 'description',
+      type: 'richText',
+      required: true,
+    },
+    {
+      name: 'tags',
+      type: 'select',
+      options: [
+        {
+          label: 'Pengumuman',
+          value: 'pengumuman',
+        },
+        {
+          label: 'Berita',
+          value: 'berita',
+        },
+      ],
+    },
   ],
   timestamps: true,
   upload: false, 
