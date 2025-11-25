@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     siaran: Siaran;
+    acara: Acara;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     siaran: SiaranSelect<false> | SiaranSelect<true>;
+    acara: AcaraSelect<false> | AcaraSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -243,6 +245,87 @@ export interface Siaran {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "acara".
+ */
+export interface Acara {
+  id: string;
+  /**
+   * The title of the event
+   */
+  title: string;
+  /**
+   * Alternative text for the image (for accessibility)
+   */
+  'image alt': string;
+  /**
+   * Main image for the event
+   */
+  image: string | Media;
+  /**
+   * Estimated read time in minutes
+   */
+  readTime: number;
+  /**
+   * Date of the event
+   */
+  articleDate: string;
+  /**
+   * Additional media files attached to the event
+   */
+  attachments?:
+    | {
+        /**
+         * Upload additional files or images
+         */
+        media?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Main content of the event
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Brief description or summary of the event
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Add a category for this event (will be automatically formatted)
+   */
+  category: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -276,6 +359,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'siaran';
         value: string | Siaran;
+      } | null)
+    | ({
+        relationTo: 'acara';
+        value: string | Acara;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -364,6 +451,28 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "siaran_select".
  */
 export interface SiaranSelect<T extends boolean = true> {
+  title?: T;
+  'image alt'?: T;
+  image?: T;
+  readTime?: T;
+  articleDate?: T;
+  attachments?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
+  content?: T;
+  description?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "acara_select".
+ */
+export interface AcaraSelect<T extends boolean = true> {
   title?: T;
   'image alt'?: T;
   image?: T;
