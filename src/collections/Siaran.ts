@@ -29,7 +29,7 @@ export const Siaran: CollectionConfig = {
     {
       name: 'image',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'articles-media',
       required: true,
       admin: {
         description: 'Main image for the article',
@@ -56,13 +56,13 @@ export const Siaran: CollectionConfig = {
       type: 'array',
       required: false,
       admin: {
-        description: 'Additional media files attached to the article',
+        description: 'Additional images files attached to the article',
       },
       fields: [
         {
-          name: 'media',
+          name: 'images',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: 'articles-media',
           required: false,
           admin: {
             description: 'Upload additional files or images',

@@ -29,7 +29,7 @@ export const Acara: CollectionConfig = {
     {
       name: 'image',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'articles-media',
       required: true,
       admin: {
         description: 'Main image for the event',
@@ -56,13 +56,13 @@ export const Acara: CollectionConfig = {
       type: 'array',
       required: false,
       admin: {
-        description: 'Additional media files attached to the event',
+        description: 'Additional images files attached to the event',
       },
       fields: [
         {
-          name: 'media',
+          name: 'images',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: 'articles-media',
           required: false,
           admin: {
             description: 'Upload additional files or images',

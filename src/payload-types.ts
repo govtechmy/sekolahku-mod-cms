@@ -69,8 +69,9 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    siaran: Siaran;
+    'articles-media': ArticlesMedia;
     acara: Acara;
+    siaran: Siaran;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,8 +81,9 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    siaran: SiaranSelect<false> | SiaranSelect<true>;
+    'articles-media': ArticlesMediaSelect<false> | ArticlesMediaSelect<true>;
     acara: AcaraSelect<false> | AcaraSelect<true>;
+    siaran: SiaranSelect<false> | SiaranSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -164,84 +166,22 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "siaran".
+ * via the `definition` "articles-media".
  */
-export interface Siaran {
+export interface ArticlesMedia {
   id: string;
-  /**
-   * The title of the article
-   */
-  title: string;
-  /**
-   * Alternative text for the image (for accessibility)
-   */
-  'image alt': string;
-  /**
-   * Main image for the article
-   */
-  image: string | Media;
-  /**
-   * Estimated read time in minutes
-   */
-  readTime: number;
-  /**
-   * Date of the article
-   */
-  articleDate: string;
-  /**
-   * Additional media files attached to the article
-   */
-  attachments?:
-    | {
-        /**
-         * Upload additional files or images
-         */
-        media?: (string | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Main content of the article
-   */
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Brief description or summary of the article
-   */
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Add a category for this article (will be automatically formatted)
-   */
-  category: string;
+  alt: string;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -260,7 +200,7 @@ export interface Acara {
   /**
    * Main image for the event
    */
-  image: string | Media;
+  image: string | ArticlesMedia;
   /**
    * Estimated read time in minutes
    */
@@ -270,14 +210,14 @@ export interface Acara {
    */
   articleDate: string;
   /**
-   * Additional media files attached to the event
+   * Additional images files attached to the event
    */
   attachments?:
     | {
         /**
          * Upload additional files or images
          */
-        media?: (string | null) | Media;
+        images?: (string | null) | ArticlesMedia;
         id?: string | null;
       }[]
     | null;
@@ -326,6 +266,87 @@ export interface Acara {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siaran".
+ */
+export interface Siaran {
+  id: string;
+  /**
+   * The title of the article
+   */
+  title: string;
+  /**
+   * Alternative text for the image (for accessibility)
+   */
+  'image alt': string;
+  /**
+   * Main image for the article
+   */
+  image: string | ArticlesMedia;
+  /**
+   * Estimated read time in minutes
+   */
+  readTime: number;
+  /**
+   * Date of the article
+   */
+  articleDate: string;
+  /**
+   * Additional images files attached to the article
+   */
+  attachments?:
+    | {
+        /**
+         * Upload additional files or images
+         */
+        images?: (string | null) | ArticlesMedia;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Main content of the article
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Brief description or summary of the article
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Add a category for this article (will be automatically formatted)
+   */
+  category: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -357,12 +378,16 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'siaran';
-        value: string | Siaran;
+        relationTo: 'articles-media';
+        value: string | ArticlesMedia;
       } | null)
     | ({
         relationTo: 'acara';
         value: string | Acara;
+      } | null)
+    | ({
+        relationTo: 'siaran';
+        value: string | Siaran;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -448,25 +473,21 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "siaran_select".
+ * via the `definition` "articles-media_select".
  */
-export interface SiaranSelect<T extends boolean = true> {
-  title?: T;
-  'image alt'?: T;
-  image?: T;
-  readTime?: T;
-  articleDate?: T;
-  attachments?:
-    | T
-    | {
-        media?: T;
-        id?: T;
-      };
-  content?: T;
-  description?: T;
-  category?: T;
+export interface ArticlesMediaSelect<T extends boolean = true> {
+  alt?: T;
   updatedAt?: T;
   createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -481,7 +502,29 @@ export interface AcaraSelect<T extends boolean = true> {
   attachments?:
     | T
     | {
-        media?: T;
+        images?: T;
+        id?: T;
+      };
+  content?: T;
+  description?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siaran_select".
+ */
+export interface SiaranSelect<T extends boolean = true> {
+  title?: T;
+  'image alt'?: T;
+  image?: T;
+  readTime?: T;
+  articleDate?: T;
+  attachments?:
+    | T
+    | {
+        images?: T;
         id?: T;
       };
   content?: T;
