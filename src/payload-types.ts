@@ -194,10 +194,6 @@ export interface Acara {
    */
   title: string;
   /**
-   * Alternative text for the image (for accessibility)
-   */
-  'image alt': string;
-  /**
    * Main image for the event
    */
   image: string | ArticlesMedia;
@@ -274,10 +270,6 @@ export interface Siaran {
    * The title of the article
    */
   title: string;
-  /**
-   * Alternative text for the image (for accessibility)
-   */
-  'image alt': string;
   /**
    * Main image for the article
    */
@@ -495,7 +487,6 @@ export interface ArticlesMediaSelect<T extends boolean = true> {
  */
 export interface AcaraSelect<T extends boolean = true> {
   title?: T;
-  'image alt'?: T;
   image?: T;
   readTime?: T;
   articleDate?: T;
@@ -517,7 +508,6 @@ export interface AcaraSelect<T extends boolean = true> {
  */
 export interface SiaranSelect<T extends boolean = true> {
   title?: T;
-  'image alt'?: T;
   image?: T;
   readTime?: T;
   articleDate?: T;

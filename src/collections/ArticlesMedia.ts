@@ -13,6 +13,6 @@ export const ArticlesMedia: CollectionConfig = {
     },
   ],
   upload: {
-    mimeTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/gif', 'image/svg+xml'],
+    mimeTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/svg+xml'],
   },
 }
