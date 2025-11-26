@@ -236,24 +236,6 @@ export interface Acara {
     [k: string]: unknown;
   };
   /**
-   * Brief description or summary of the event
-   */
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
    * Add a category for this event (will be automatically formatted)
    */
   category: string;
@@ -298,24 +280,6 @@ export interface Siaran {
    * Main content of the article
    */
   content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Brief description or summary of the article
-   */
-  description: {
     root: {
       type: string;
       children: {
@@ -497,7 +461,6 @@ export interface AcaraSelect<T extends boolean = true> {
         id?: T;
       };
   content?: T;
-  description?: T;
   category?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -518,7 +481,6 @@ export interface SiaranSelect<T extends boolean = true> {
         id?: T;
       };
   content?: T;
-  description?: T;
   category?: T;
   updatedAt?: T;
   createdAt?: T;
