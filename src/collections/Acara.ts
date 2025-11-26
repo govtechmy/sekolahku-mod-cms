@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export const Acara: CollectionConfig = {
   slug: 'acara',
@@ -19,17 +20,9 @@ export const Acara: CollectionConfig = {
       },
     },
     {
-      name: 'image alt',
-      type: 'text',
-      required: true,
-      admin: {
-        description: 'Alternative text for the image (for accessibility)',
-      },
-    },
-    {
       name: 'image',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'articles-media',
       required: true,
       admin: {
         description: 'Main image for the event',
@@ -56,13 +49,13 @@ export const Acara: CollectionConfig = {
       type: 'array',
       required: false,
       admin: {
-        description: 'Additional media files attached to the event',
+        description: 'Additional images files attached to the event',
       },
       fields: [
         {
-          name: 'media',
+          name: 'image',
           type: 'upload',
-          relationTo: 'media',
+          relationTo: 'articles-media',
           required: false,
           admin: {
             description: 'Upload additional files or images',
@@ -74,16 +67,9 @@ export const Acara: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
+      editor: lexicalEditor(),
       admin: {
         description: 'Main content of the event',
-      },
-    },
-    {
-      name: 'description',
-      type: 'richText',
-      required: true,
-      admin: {
-        description: 'Brief description or summary of the event',
       },
     },
     {
