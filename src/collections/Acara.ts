@@ -53,7 +53,7 @@ export const Acara: CollectionConfig = {
       },
       fields: [
         {
-          name: 'images',
+          name: 'image',
           type: 'upload',
           relationTo: 'articles-media',
           required: false,

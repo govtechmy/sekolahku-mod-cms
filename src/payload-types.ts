@@ -213,7 +213,7 @@ export interface Acara {
         /**
          * Upload additional files or images
          */
-        images?: (string | null) | ArticlesMedia;
+        image?: (string | null) | ArticlesMedia;
         id?: string | null;
       }[]
     | null;
@@ -272,7 +272,7 @@ export interface Siaran {
         /**
          * Upload additional files or images
          */
-        images?: (string | null) | ArticlesMedia;
+        image?: (string | null) | ArticlesMedia;
         id?: string | null;
       }[]
     | null;
@@ -457,7 +457,7 @@ export interface AcaraSelect<T extends boolean = true> {
   attachments?:
     | T
     | {
-        images?: T;
+        image?: T;
         id?: T;
       };
   content?: T;
@@ -477,7 +477,7 @@ export interface SiaranSelect<T extends boolean = true> {
   attachments?:
     | T
     | {
-        images?: T;
+        image?: T;
         id?: T;
       };
   content?: T;
