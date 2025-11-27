@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { ArticlesMedia } from './collections/ArticlesMedia'
 import { Acara } from './collections/Acara'
 import { Siaran } from './collections/Siaran'
+import { Categories } from './collections/Categories'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, ArticlesMedia, Acara, Siaran],
+  collections: [Users, Media, ArticlesMedia, Acara, Siaran, Categories],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
