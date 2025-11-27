@@ -72,6 +72,7 @@ export interface Config {
     'articles-media': ArticlesMedia;
     acara: Acara;
     siaran: Siaran;
+    categories: Category;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     'articles-media': ArticlesMediaSelect<false> | ArticlesMediaSelect<true>;
     acara: AcaraSelect<false> | AcaraSelect<true>;
     siaran: SiaranSelect<false> | SiaranSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -236,9 +238,26 @@ export interface Acara {
     [k: string]: unknown;
   };
   /**
-   * Add a category for this event (will be automatically formatted)
+   * Select a category for this article
    */
-  category: string;
+  category: string | Category;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  /**
+   * Enter category name (max 100 character)
+   */
+  name: string;
+  /**
+   * Auto-generated slug from category name
+   */
+  value: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -295,9 +314,9 @@ export interface Siaran {
     [k: string]: unknown;
   };
   /**
-   * Add a category for this article (will be automatically formatted)
+   * Select a category for this article
    */
-  category: string;
+  category: string | Category;
   updatedAt: string;
   createdAt: string;
 }
@@ -344,6 +363,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'siaran';
         value: string | Siaran;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: string | Category;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -482,6 +505,16 @@ export interface SiaranSelect<T extends boolean = true> {
       };
   content?: T;
   category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  name?: T;
+  value?: T;
   updatedAt?: T;
   createdAt?: T;
 }
