@@ -251,7 +251,7 @@ export interface Acara {
 export interface Category {
   id: string;
   /**
-   * Enter category name (max 100 characters)
+   * Enter category name (max 50 characters)
    */
   name: string;
   /**
