@@ -10,7 +10,7 @@ export const Categories: CollectionConfig = {
     defaultColumns: ['name', 'value'],
   },
   hooks: {
-    beforeValidate: [
+    beforeChange: [
       ({ data }) => {
         if (data?.name) {
           // Capitalize first letter for name
@@ -34,9 +34,9 @@ export const Categories: CollectionConfig = {
      required: true,
      unique: true,
      minLength: 1,
-     maxLength: 100,
+     maxLength: 50,
      admin: {
-        description: 'Enter category name (max 100 character)',
+        description: 'Enter category name (max 50 characters)',
      },
     },
     {
