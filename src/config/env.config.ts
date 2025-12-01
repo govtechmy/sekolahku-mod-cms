@@ -18,7 +18,7 @@ async function resolveEnvFromSecretsManager() {
         }
       }
     } catch (error) {
-      // Silently fall back to .env values if AWS Secrets Manager fails
+      console.error('Failed to fetch secrets from AWS Secrets Manager:', error)
     }
   }
   // If AWS_SECRET_NAME is not set, use .env values

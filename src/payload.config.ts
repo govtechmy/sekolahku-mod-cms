@@ -39,7 +39,7 @@ export default buildConfig({
   sharp,
   plugins: [
     s3Storage({
-      collections: { ['media']: true },
+      collections: { media: true },
       bucket: process.env.S3_BUCKET_NAME ?? '',
       config: {},
     }),
