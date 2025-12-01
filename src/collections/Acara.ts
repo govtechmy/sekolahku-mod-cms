@@ -1,10 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { isAuthenticated } from '../auth/apiKeyStrategy'
 
 export const Acara: CollectionConfig = {
   slug: 'acara',
   access: {
-    read: () => true,
+    read: isAuthenticated,
+    create: isAuthenticated,
+    update: isAuthenticated,
+    delete: isAuthenticated,
   },
   admin: {
     useAsTitle: 'title',
