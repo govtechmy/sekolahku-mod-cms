@@ -1,10 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { isAuthenticated } from '../auth/apiKeyStrategy'
 
 export const Acara: CollectionConfig = {
   slug: 'acara',
   access: {
-    read: () => true,
+    read: isAuthenticated,
+    create: isAuthenticated,
+    update: isAuthenticated,
+    delete: isAuthenticated,
   },
   admin: {
     useAsTitle: 'title',
@@ -74,24 +78,12 @@ export const Acara: CollectionConfig = {
     },
     {
       name: 'category',
-      type: 'text',
+      type: 'relationship',
+      relationTo: 'categories',
       required: true,
+      hasMany: false,
       admin: {
-        description: 'Add a category for this event (will be automatically formatted)',
-      },
-      hooks: {
-        beforeChange: [
-          ({ value }) => {
-            if (typeof value === 'string' && value.length > 0) {
-              // Convert to title case: capitalize first letter of each word
-              return value
-                .split(' ')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                .join(' ')
-            }
-            return value
-          },
-        ],
+        description: 'Select a category for this event',
       },
     },
   ],

@@ -14,6 +14,7 @@ import { Media } from './collections/Media'
 import { ArticlesMedia } from './collections/ArticlesMedia'
 import { Acara } from './collections/Acara'
 import { Siaran } from './collections/Siaran'
+import { Categories } from './collections/Categories'
 
 import { s3Storage } from '@payloadcms/storage-s3'
 
@@ -27,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, ArticlesMedia, Acara, Siaran],
+  collections: [Users, Media, ArticlesMedia, Acara, Siaran, Categories],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? '',
   typescript: {
