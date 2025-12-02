@@ -23,7 +23,7 @@ RUN pnpm run build
 FROM base AS runner
 WORKDIR /app
 
-RUN echo "AWS_SECRET_NAME=sekolahku-mod-api-secret-v-dev" > .env
+RUN echo "AWS_SECRET_NAME=sekolahku-mod-cms-secret-dev" > .env
 
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
@@ -44,7 +44,7 @@ USER nextjs
 
 # Environment variables for production (override with docker run -e)
 ENV PORT=8080 \
-    AWS_SECRET_NAME=sekolahku-mod-api-secret-v-dev
+    AWS_SECRET_NAME=sekolahku-mod-cms-secret-dev
 
 EXPOSE 8080
 
