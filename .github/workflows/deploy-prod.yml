@@ -1,8 +1,8 @@
-name: Deploy to AWS ECS Development
+name: Deploy to AWS ECS Production
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
 
 jobs:
   deploy:
@@ -28,10 +28,10 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: sekolahku-mod-cms-dev
+          ECR_REPOSITORY: sekolahku-mod-cms-prod
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -f Dockerfile.dev -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -f Dockerfile.prod -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
@@ -45,8 +45,8 @@ jobs:
         run: |
           # Get the current task definition ARN from the service
           TASK_DEF_ARN=$(aws ecs describe-services \
-            --cluster ${{ secrets.ECS_CLUSTER_DEV }} \
-            --services ${{ secrets.ECS_SERVICE_DEV }} \
+            --cluster ${{ secrets.ECS_CLUSTER_PROD }} \
+            --services ${{ secrets.ECS_SERVICE_PROD }} \
             --query 'services[0].taskDefinition' \
             --output text)
 
@@ -89,8 +89,8 @@ jobs:
         run: |
           # Update the service with the new task definition
           aws ecs update-service \
-            --cluster ${{ secrets.ECS_CLUSTER_DEV }} \
-            --service ${{ secrets.ECS_SERVICE_DEV }} \
+            --cluster ${{ secrets.ECS_CLUSTER_PROD }} \
+            --service ${{ secrets.ECS_SERVICE_PROD }} \
             --task-definition ${{ steps.register-task-def.outputs.task-definition-arn }} \
             --force-new-deployment \
             --query 'service.serviceArn' \
@@ -98,5 +98,5 @@ jobs:
 
           # Wait for service stability
           aws ecs wait services-stable \
-            --cluster ${{ secrets.ECS_CLUSTER_DEV }} \
-            --services ${{ secrets.ECS_SERVICE_DEV }}
+            --cluster ${{ secrets.ECS_CLUSTER_PROD }} \
+            --services ${{ secrets.ECS_SERVICE_PROD }}
