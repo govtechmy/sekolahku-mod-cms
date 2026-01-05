@@ -51,9 +51,19 @@ export const Categories: CollectionConfig = {
     },
     {
       name: 'colors',
-      type: 'text',
+      type: 'select',
       required: false,
       defaultValue: '#2563EB',
+      options: [
+        {
+          label: 'Green',
+          value: '#10B981',
+        },
+        {
+          label: 'Blue',
+          value: '#2563EB',
+        },
+      ],
       admin: {
         description: 'Insert hex color codes ',
       },

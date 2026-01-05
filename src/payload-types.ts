@@ -261,7 +261,7 @@ export interface Category {
   /**
    * Insert hex color codes
    */
-  colors?: string | null;
+  colors?: ('#10B981' | '#2563EB') | null;
   updatedAt: string;
   createdAt: string;
 }
