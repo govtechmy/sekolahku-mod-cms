@@ -28,16 +28,16 @@ export const Categories: CollectionConfig = {
     ],
   },
   fields: [
-   {
-     name: 'name',
-     type: 'text',
-     required: true,
-     unique: true,
-     minLength: 1,
-     maxLength: 50,
-     admin: {
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      unique: true,
+      minLength: 1,
+      maxLength: 50,
+      admin: {
         description: 'Enter category name (max 50 characters)',
-     },
+      },
     },
     {
       name: 'value',
@@ -49,7 +49,15 @@ export const Categories: CollectionConfig = {
         description: 'Auto-generated slug from category name',
       },
     },
+    {
+      name: 'colors',
+      type: 'text',
+      required: false,
+      defaultValue: '#2563EB',
+      admin: {
+        description: 'Insert hex color codes ',
+      },
+    },
   ],
   timestamps: true,
 }
-
