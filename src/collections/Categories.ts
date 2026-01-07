@@ -58,7 +58,7 @@ export const Categories: CollectionConfig = {
         if (!value || typeof value !== 'string') return true
         return /^#[0-9A-Fa-f]{6}$/.test(value)
           ? true
-          : 'Colors must be a valid hex color code of the form #RRGGBB (e.g., #2563EB).'
+          : 'Color must be a valid hex color code of the form #RRGGBB (e.g., #2563EB).'
       },
       options: [
         {
