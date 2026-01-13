@@ -28,16 +28,16 @@ export const Categories: CollectionConfig = {
     ],
   },
   fields: [
-   {
-     name: 'name',
-     type: 'text',
-     required: true,
-     unique: true,
-     minLength: 1,
-     maxLength: 50,
-     admin: {
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      unique: true,
+      minLength: 1,
+      maxLength: 50,
+      admin: {
         description: 'Enter category name (max 50 characters)',
-     },
+      },
     },
     {
       name: 'value',
@@ -49,7 +49,31 @@ export const Categories: CollectionConfig = {
         description: 'Auto-generated slug from category name',
       },
     },
+    {
+      name: 'colors',
+      type: 'select',
+      required: false,
+      defaultValue: '#2563EB',
+      validate: (value: unknown) => {
+        if (!value || typeof value !== 'string') return true
+        return /^#[0-9A-Fa-f]{6}$/.test(value)
+          ? true
+          : 'Color must be a valid hex color code of the form #RRGGBB (e.g., #2563EB).'
+      },
+      options: [
+        {
+          label: 'Green',
+          value: '#10B981',
+        },
+        {
+          label: 'Blue',
+          value: '#2563EB',
+        },
+      ],
+      admin: {
+        description: 'Insert hex color code (e.g., #2563EB)',
+      },
+    },
   ],
   timestamps: true,
 }
-

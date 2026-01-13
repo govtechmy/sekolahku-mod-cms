@@ -258,6 +258,10 @@ export interface Category {
    * Auto-generated slug from category name
    */
   value: string;
+  /**
+   * Insert hex color codes
+   */
+  colors?: ('#10B981' | '#2563EB') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -515,6 +519,7 @@ export interface SiaranSelect<T extends boolean = true> {
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   value?: T;
+  colors?: T;
   updatedAt?: T;
   createdAt?: T;
 }
