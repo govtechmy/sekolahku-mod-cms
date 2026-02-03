@@ -35,7 +35,7 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: 'mongodb+srv://sekolahku-db-user-prod:fdURX3ZilxBsgVpP@sekolahku-cluster-prod-pl-1.5szaj6.mongodb.net/payload-data?appName=sekolahku-cluster-prod',
+    url: process.env.MONGODB_URI ?? '',
   }),
   sharp,
   plugins: [
