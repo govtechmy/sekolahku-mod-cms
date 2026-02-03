@@ -70,7 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     'articles-media': ArticlesMedia;
-    acara: Acara;
+    takwim: Takwim;
     siaran: Siaran;
     categories: Category;
     'payload-kv': PayloadKv;
@@ -83,7 +83,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'articles-media': ArticlesMediaSelect<false> | ArticlesMediaSelect<true>;
-    acara: AcaraSelect<false> | AcaraSelect<true>;
+    takwim: TakwimSelect<false> | TakwimSelect<true>;
     siaran: SiaranSelect<false> | SiaranSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -187,9 +187,9 @@ export interface ArticlesMedia {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "acara".
+ * via the `definition` "takwim".
  */
-export interface Acara {
+export interface Takwim {
   id: string;
   /**
    * The title of the event
@@ -361,8 +361,8 @@ export interface PayloadLockedDocument {
         value: string | ArticlesMedia;
       } | null)
     | ({
-        relationTo: 'acara';
-        value: string | Acara;
+        relationTo: 'takwim';
+        value: string | Takwim;
       } | null)
     | ({
         relationTo: 'siaran';
@@ -474,9 +474,9 @@ export interface ArticlesMediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "acara_select".
+ * via the `definition` "takwim_select".
  */
-export interface AcaraSelect<T extends boolean = true> {
+export interface TakwimSelect<T extends boolean = true> {
   title?: T;
   image?: T;
   readTime?: T;
