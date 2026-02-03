@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { isAuthenticated } from '../auth/apiKeyStrategy'
 
-export const Acara: CollectionConfig = {
+export const Takwim: CollectionConfig = {
   slug: 'acara',
   access: {
     read: isAuthenticated,
