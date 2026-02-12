@@ -12,7 +12,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { ArticlesMedia } from './collections/ArticlesMedia'
-import { Acara } from './collections/Acara'
+import { Takwim } from './collections/Takwim'
 import { Siaran } from './collections/Siaran'
 import { Categories } from './collections/Categories'
 
@@ -28,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, ArticlesMedia, Acara, Siaran, Categories],
+  collections: [Users, Media, ArticlesMedia, Takwim, Siaran, Categories],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? '',
   typescript: {
