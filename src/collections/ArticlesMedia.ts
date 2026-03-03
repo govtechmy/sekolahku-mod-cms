@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const ArticlesMedia: CollectionConfig = {
   slug: 'articles-media',
+  labels: {
+    singular: 'Media Artikel',
+    plural: 'Media Artikel',
+  },
   access: {
     read: () => true,
   },
