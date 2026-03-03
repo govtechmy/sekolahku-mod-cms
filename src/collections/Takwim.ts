@@ -36,14 +36,14 @@ export const Takwim: CollectionConfig = {
         description: 'Main image for the event',
       },
     },
-    {
-      name: 'readTime',
-      type: 'number',
-      required: true,
-      admin: {
-        description: 'Estimated read time in minutes',
-      },
-    },
+    // {
+    //   name: 'readTime',
+    //   type: 'number',
+    //   required: true,
+    //   admin: {
+    //     description: 'Estimated read time in minutes',
+    //   },
+    // },
     {
       name: 'articleDate',
       type: 'date',
