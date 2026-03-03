@@ -200,10 +200,6 @@ export interface Takwim {
    */
   image: string | ArticlesMedia;
   /**
-   * Estimated read time in minutes
-   */
-  readTime: number;
-  /**
    * Date of the event
    */
   articleDate: string;
@@ -279,10 +275,6 @@ export interface Siaran {
    * Main image for the article
    */
   image: string | ArticlesMedia;
-  /**
-   * Estimated read time in minutes
-   */
-  readTime: number;
   /**
    * Date of the article
    */
@@ -479,7 +471,6 @@ export interface ArticlesMediaSelect<T extends boolean = true> {
 export interface TakwimSelect<T extends boolean = true> {
   title?: T;
   image?: T;
-  readTime?: T;
   articleDate?: T;
   attachments?:
     | T
@@ -499,7 +490,6 @@ export interface TakwimSelect<T extends boolean = true> {
 export interface SiaranSelect<T extends boolean = true> {
   title?: T;
   image?: T;
-  readTime?: T;
   articleDate?: T;
   attachments?:
     | T
