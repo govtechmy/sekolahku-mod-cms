@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
+  labels: {
+    singular: 'Kategori',
+    plural: 'Kategori',
+  },
   access: {
     read: () => true,
   },

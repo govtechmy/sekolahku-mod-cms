@@ -4,6 +4,10 @@ import { isAuthenticated } from '../auth/apiKeyStrategy'
 
 export const Siaran: CollectionConfig = {
   slug: 'siaran',
+  labels: {
+    singular: 'Siaran',
+    plural: 'Siaran',
+  },
   access: {
     read: isAuthenticated,
     create: isAuthenticated,
@@ -88,5 +92,5 @@ export const Siaran: CollectionConfig = {
     },
   ],
   timestamps: true,
-  upload: false, 
+  upload: false,
 }

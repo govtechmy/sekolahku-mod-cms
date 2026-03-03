@@ -4,6 +4,10 @@ import { isAuthenticated } from '../auth/apiKeyStrategy'
 
 export const Takwim: CollectionConfig = {
   slug: 'takwim',
+  labels: {
+    singular: 'Takwim',
+    plural: 'Takwim',
+  },
   access: {
     read: isAuthenticated,
     create: isAuthenticated,

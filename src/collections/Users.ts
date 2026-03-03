@@ -3,6 +3,10 @@ import { apiKeyStrategy } from '../auth/apiKeyStrategy'
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  labels: {
+    singular: 'Pengguna',
+    plural: 'Pengguna',
+  },
   admin: {
     useAsTitle: 'email',
   },
