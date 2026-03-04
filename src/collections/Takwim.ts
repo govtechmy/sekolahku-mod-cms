@@ -57,13 +57,13 @@ export const Takwim: CollectionConfig = {
       type: 'array',
       required: false,
       admin: {
-        description: 'Additional images files attached to the event',
+        description: 'Additional files or images attached to the event',
       },
       fields: [
         {
-          name: 'image',
+          name: 'file',
           type: 'upload',
-          relationTo: 'articles-media',
+          relationTo: 'media',
           required: false,
           admin: {
             description: 'Upload additional files or images',
