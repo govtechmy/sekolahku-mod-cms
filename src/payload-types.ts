@@ -204,14 +204,14 @@ export interface Takwim {
    */
   articleDate: string;
   /**
-   * Additional images files attached to the event
+   * Additional files or images attached to the event
    */
   attachments?:
     | {
         /**
          * Upload additional files or images
          */
-        image?: (string | null) | ArticlesMedia;
+        file?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -280,14 +280,14 @@ export interface Siaran {
    */
   articleDate: string;
   /**
-   * Additional images files attached to the article
+   * Additional files or images attached to the event
    */
   attachments?:
     | {
         /**
          * Upload additional files or images
          */
-        image?: (string | null) | ArticlesMedia;
+        file?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -475,7 +475,7 @@ export interface TakwimSelect<T extends boolean = true> {
   attachments?:
     | T
     | {
-        image?: T;
+        file?: T;
         id?: T;
       };
   content?: T;
@@ -494,7 +494,7 @@ export interface SiaranSelect<T extends boolean = true> {
   attachments?:
     | T
     | {
-        image?: T;
+        file?: T;
         id?: T;
       };
   content?: T;
