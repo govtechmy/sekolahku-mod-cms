@@ -148,6 +148,8 @@ export interface User {
   password?: string | null;
 }
 /**
+ * Maximum file size: 50MB
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
@@ -167,6 +169,8 @@ export interface Media {
   focalY?: number | null;
 }
 /**
+ * Maximum file size: 10MB
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles-media".
  */
