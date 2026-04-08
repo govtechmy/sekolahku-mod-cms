@@ -5,8 +5,8 @@ import { isAuthenticated } from '../auth/apiKeyStrategy'
 export const Siaran: CollectionConfig = {
   slug: 'siaran',
   labels: {
-    singular: 'Siaran',
-    plural: 'Siaran',
+    singular: 'Berita KPM',
+    plural: 'Berita KPM',
   },
   access: {
     read: isAuthenticated,
