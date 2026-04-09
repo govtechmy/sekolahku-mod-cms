@@ -54,8 +54,24 @@ export const Categories: CollectionConfig = {
       type: 'text',
       required: false,
       defaultValue: '#2563EB',
+      validate: (value: unknown) => {
+        if (!value || typeof value !== 'string') return true
+        return /^#[0-9A-Fa-f]{6}$/.test(value)
+          ? true
+          : 'Colors must be a valid hex color code of the form #RRGGBB (e.g., #2563EB).'
+      },
+      options: [
+        {
+          label: 'Green',
+          value: '#10B981',
+        },
+        {
+          label: 'Blue',
+          value: '#2563EB',
+        },
+      ],
       admin: {
-        description: 'Insert hex color codes ',
+        description: 'Insert hex color code (e.g., #2563EB)',
       },
     },
   ],
