@@ -55,7 +55,7 @@ export const Categories: CollectionConfig = {
     },
     {
       name: 'colors',
-      type: 'text',
+      type: 'select',
       required: false,
       defaultValue: '#2563EB',
       validate: (value: unknown) => {
