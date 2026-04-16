@@ -50,6 +50,10 @@ export const Siaran: CollectionConfig = {
       required: true,
       admin: {
         description: 'Date of the article',
+        date: {
+          pickerAppearance: 'dayOnly',
+          displayFormat: 'dd/MM/yyyy',
+        },
       },
     },
     {

@@ -24,6 +24,7 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: Users.slug,
+    dateFormat: 'dd/MM/yyyy',
     importMap: {
       baseDir: path.resolve(dirname),
     },
