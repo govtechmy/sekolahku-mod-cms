@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import { APIError, type CollectionConfig } from 'payload'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -28,6 +28,36 @@ export const Categories: CollectionConfig = {
             .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
         }
         return data
+      },
+    ],
+    beforeDelete: [
+      async ({ id, req }) => {
+        const [siaranUsage, takwimUsage] = await Promise.all([
+          req.payload.find({
+            collection: 'siaran',
+            where: {
+              category: {
+                equals: id,
+              },
+            },
+            limit: 1,
+            depth: 0,
+          }),
+          req.payload.find({
+            collection: 'takwim',
+            where: {
+              category: {
+                equals: id,
+              },
+            },
+            limit: 1,
+            depth: 0,
+          }),
+        ])
+
+        if (siaranUsage.totalDocs > 0 || takwimUsage.totalDocs > 0) {
+          throw new APIError('This category is still being used and cannot be deleted.', 400)
+        }
       },
     ],
   },
