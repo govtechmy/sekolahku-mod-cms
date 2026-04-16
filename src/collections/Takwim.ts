@@ -50,6 +50,10 @@ export const Takwim: CollectionConfig = {
       required: true,
       admin: {
         description: 'Date of the event',
+        date: {
+          pickerAppearance: 'dayOnly',
+          displayFormat: 'dd/MM/yyyy',
+        },
       },
     },
     {

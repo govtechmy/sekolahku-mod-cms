@@ -148,7 +148,7 @@ export interface User {
   password?: string | null;
 }
 /**
- * Maximum file size: 50MB
+ * Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB. Invalid uploads will be rejected automatically.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
@@ -169,7 +169,7 @@ export interface Media {
   focalY?: number | null;
 }
 /**
- * Maximum file size: 10MB
+ * Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB. Invalid uploads will be rejected automatically.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles-media".

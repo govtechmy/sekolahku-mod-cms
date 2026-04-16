@@ -1,0 +1,15 @@
+@layer payload-custom {
+  form.login__form.form a[href*='/forgot'] {
+    display: none;
+  }
+
+  form.login__form.form .login__form__inputWrap::after {
+    content: 'Contact your pentadbir Portal (Admin) For login issues';
+    display: block;
+    margin-top: calc(var(--base) / 2);
+    margin-bottom: calc(var(--base) / 2);
+    color: var(--theme-elevation-600);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
