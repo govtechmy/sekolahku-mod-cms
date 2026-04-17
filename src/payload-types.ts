@@ -200,9 +200,9 @@ export interface Takwim {
    */
   title: string;
   /**
-   * Main image for the event
+   * Main image for the event. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.
    */
-  image: string | ArticlesMedia;
+  image?: (string | null) | ArticlesMedia;
   /**
    * Date of the event
    */
@@ -276,7 +276,7 @@ export interface Siaran {
    */
   title: string;
   /**
-   * Main image for the article
+   * Main image for the article. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.
    */
   image: string | ArticlesMedia;
   /**

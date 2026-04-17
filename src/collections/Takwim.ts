@@ -31,9 +31,10 @@ export const Takwim: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'articles-media',
-      required: true,
+      required: false,
       admin: {
         description: 'Main image for the event. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.',
+        hidden: true,
       },
     },
     // {
