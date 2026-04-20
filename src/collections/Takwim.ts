@@ -79,10 +79,11 @@ export const Takwim: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
-      required: true,
+      required: false,
       editor: lexicalEditor(),
       admin: {
         description: 'Main content of the event',
+        hidden: true,
       },
     },
     {

@@ -222,7 +222,7 @@ export interface Takwim {
   /**
    * Main content of the event
    */
-  content: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -236,7 +236,7 @@ export interface Takwim {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   /**
    * Select a category for this event
    */
