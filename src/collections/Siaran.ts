@@ -34,6 +34,7 @@ export const Siaran: CollectionConfig = {
       required: true,
       admin: {
         description: 'Main image for the article. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.',
+        hidden: true,
       },
     },
     // {
