@@ -148,7 +148,7 @@ export interface User {
   password?: string | null;
 }
 /**
- * Maximum file size: 50MB
+ * Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB. Invalid uploads will be rejected automatically.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
@@ -169,7 +169,7 @@ export interface Media {
   focalY?: number | null;
 }
 /**
- * Maximum file size: 10MB
+ * Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB. Invalid uploads will be rejected automatically.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles-media".
@@ -200,9 +200,9 @@ export interface Takwim {
    */
   title: string;
   /**
-   * Main image for the event
+   * Main image for the event. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.
    */
-  image: string | ArticlesMedia;
+  image?: (string | null) | ArticlesMedia;
   /**
    * Date of the event
    */
@@ -222,7 +222,7 @@ export interface Takwim {
   /**
    * Main content of the event
    */
-  content: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -236,7 +236,7 @@ export interface Takwim {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   /**
    * Select a category for this event
    */
@@ -276,7 +276,7 @@ export interface Siaran {
    */
   title: string;
   /**
-   * Main image for the article
+   * Main image for the article. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.
    */
   image: string | ArticlesMedia;
   /**

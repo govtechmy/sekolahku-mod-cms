@@ -31,9 +31,10 @@ export const Takwim: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'articles-media',
-      required: true,
+      required: false,
       admin: {
-        description: 'Main image for the event',
+        description: 'Main image for the event. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.',
+        hidden: true,
       },
     },
     // {
@@ -50,6 +51,10 @@ export const Takwim: CollectionConfig = {
       required: true,
       admin: {
         description: 'Date of the event',
+        date: {
+          pickerAppearance: 'dayOnly',
+          displayFormat: 'dd/MM/yyyy',
+        },
       },
     },
     {
@@ -74,10 +79,11 @@ export const Takwim: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
-      required: true,
+      required: false,
       editor: lexicalEditor(),
       admin: {
         description: 'Main content of the event',
+        hidden: true,
       },
     },
     {

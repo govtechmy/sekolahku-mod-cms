@@ -29,7 +29,7 @@
     "payload": "3.64.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "sharp": "0.34.2",
+    "sharp": "0.34.5",
     "zod": "^4.1.13"
   },
   "devDependencies": {

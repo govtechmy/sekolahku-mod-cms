@@ -33,7 +33,9 @@ export const Siaran: CollectionConfig = {
       relationTo: 'articles-media',
       required: true,
       admin: {
-        description: 'Main image for the article',
+        description:
+          'Main image for the article. Accepted formats: PDF, PNG, JPEG, and JPG. Maximum file size: 50MB.',
+        hidden: false,
       },
     },
     // {
@@ -50,6 +52,10 @@ export const Siaran: CollectionConfig = {
       required: true,
       admin: {
         description: 'Date of the article',
+        date: {
+          pickerAppearance: 'dayOnly',
+          displayFormat: 'dd/MM/yyyy',
+        },
       },
     },
     {
