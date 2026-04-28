@@ -16,7 +16,7 @@ export const Siaran: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'articleDate', 'readTime'],
+    defaultColumns: ['title', 'image', 'articleDate', 'content', 'category', 'attachments', 'createdAt', 'updatedAt'],
   },
   fields: [
     {
