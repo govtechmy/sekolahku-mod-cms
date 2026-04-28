@@ -16,7 +16,7 @@ export const Takwim: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'articleDate', 'readTime'],
+    defaultColumns: ['title', 'category', 'articleDate', 'attachments', 'createdAt', 'updatedAt'],
   },
   fields: [
     {
