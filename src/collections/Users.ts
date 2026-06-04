@@ -8,7 +8,10 @@ import {
 
 const DEFAULT_TOKEN_EXPIRATION_SECONDS = 60 * 60
 
-const parsedTokenExpirationSeconds = Number.parseInt(process.env.PAYLOAD_TOKEN_EXPIRATION_SECONDS ?? '', 10)
+const parsedTokenExpirationSeconds = Number.parseInt(
+  process.env.PAYLOAD_TOKEN_EXPIRATION_SECONDS ?? '',
+  10,
+)
 const tokenExpirationSeconds =
   Number.isFinite(parsedTokenExpirationSeconds) && parsedTokenExpirationSeconds > 0
     ? parsedTokenExpirationSeconds
@@ -36,6 +39,7 @@ export const Users: CollectionConfig = {
   hooks: {
     beforeChange: [
       ({ data }) => {
+        if (!data.password) return data // Skip if password unchanged
         const password = data?.password
 
         if (typeof password === 'string' && !validatePasswordComplexity(password)) {
