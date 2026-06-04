@@ -5,6 +5,7 @@ import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
+import LogoutOnClose from './LogoutOnClose'
 
 import { importMap } from './admin/importMap.js'
 import './custom.scss'
@@ -12,6 +13,8 @@ import './custom.scss'
 type Args = {
   children: React.ReactNode
 }
+
+const logoutOnCloseEnabled = process.env.PAYLOAD_LOGOUT_ON_CLOSE === 'true'
 
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
@@ -24,6 +27,7 @@ const serverFunction: ServerFunctionClient = async function (args) {
 
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+    <LogoutOnClose enabled={logoutOnCloseEnabled} />
     {children}
   </RootLayout>
 )
