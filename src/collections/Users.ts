@@ -6,6 +6,14 @@ import {
   validatePasswordComplexity,
 } from '../utils/password-policy.util'
 
+const DEFAULT_TOKEN_EXPIRATION_SECONDS = 60 * 60
+
+const parsedTokenExpirationSeconds = Number.parseInt(process.env.PAYLOAD_TOKEN_EXPIRATION_SECONDS ?? '', 10)
+const tokenExpirationSeconds =
+  Number.isFinite(parsedTokenExpirationSeconds) && parsedTokenExpirationSeconds > 0
+    ? parsedTokenExpirationSeconds
+    : DEFAULT_TOKEN_EXPIRATION_SECONDS
+
 export const Users: CollectionConfig = {
   slug: 'users',
   labels: {
@@ -17,6 +25,12 @@ export const Users: CollectionConfig = {
     description: `Password policy: ${PASSWORD_POLICY_UI_DESCRIPTION}`,
   },
   auth: {
+    tokenExpiration: tokenExpirationSeconds,
+    useSessions: true,
+    cookies: {
+      sameSite: 'Lax',
+      secure: process.env.NODE_ENV === 'production',
+    },
     strategies: [apiKeyStrategy],
   },
   hooks: {
