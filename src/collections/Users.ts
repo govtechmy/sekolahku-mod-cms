@@ -31,8 +31,8 @@ export const Users: CollectionConfig = {
     tokenExpiration: tokenExpirationSeconds,
     useSessions: true,
     cookies: {
-      sameSite: 'Lax',
-      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      secure: true,
     },
     strategies: [apiKeyStrategy],
   },
