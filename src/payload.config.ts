@@ -15,6 +15,7 @@ import { ArticlesMedia } from './collections/ArticlesMedia'
 import { Takwim } from './collections/Takwim'
 import { Siaran } from './collections/Siaran'
 import { Categories } from './collections/Categories'
+import { PASSWORD_POLICY_UI_DESCRIPTION } from './utils/password-policy.util'
 
 import { s3Storage } from '@payloadcms/storage-s3'
 
@@ -31,6 +32,18 @@ export default buildConfig({
   },
   collections: [Users, Media, ArticlesMedia, Takwim, Siaran, Categories],
   editor: lexicalEditor(),
+  i18n: {
+    translations: {
+      en: {
+        authentication: {
+          newPassword: `New Password (${PASSWORD_POLICY_UI_DESCRIPTION})`,
+        },
+        general: {
+          newPassword: `New Password (${PASSWORD_POLICY_UI_DESCRIPTION})`,
+        },
+      },
+    },
+  },
   secret: process.env.PAYLOAD_SECRET ?? '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

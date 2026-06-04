@@ -124,6 +124,8 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Password policy: At least 12 characters with uppercase, lowercase, number, and special character.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
