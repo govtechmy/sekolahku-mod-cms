@@ -6,16 +6,7 @@ import {
   validatePasswordComplexity,
 } from '../utils/password-policy.util'
 
-const DEFAULT_TOKEN_EXPIRATION_SECONDS = 60 * 60
-
-const parsedTokenExpirationSeconds = Number.parseInt(
-  process.env.PAYLOAD_TOKEN_EXPIRATION_SECONDS ?? '',
-  10,
-)
-const tokenExpirationSeconds =
-  Number.isFinite(parsedTokenExpirationSeconds) && parsedTokenExpirationSeconds > 0
-    ? parsedTokenExpirationSeconds
-    : DEFAULT_TOKEN_EXPIRATION_SECONDS
+const tokenExpirationSeconds = 15 * 60 // Default to 15 minutes
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -35,6 +26,8 @@ export const Users: CollectionConfig = {
       secure: true,
     },
     strategies: [apiKeyStrategy],
+    maxLoginAttempts: 5, // Lock account after 5 failed attempts
+    lockTime: 15 * 60 * 1000, // Lock account for 15 minutes
   },
   hooks: {
     beforeChange: [
