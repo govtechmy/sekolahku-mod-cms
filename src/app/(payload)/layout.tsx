@@ -14,7 +14,7 @@ type Args = {
   children: React.ReactNode
 }
 
-const logoutOnCloseEnabled = process.env.PAYLOAD_LOGOUT_ON_CLOSE === 'true'
+const logoutOnCloseEnabled = true
 
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
