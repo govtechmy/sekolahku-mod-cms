@@ -6,8 +6,6 @@ import {
   validatePasswordComplexity,
 } from '../utils/password-policy.util'
 
-const tokenExpirationSeconds = 15 * 60 // Default to 15 minutes
-
 export const Users: CollectionConfig = {
   slug: 'users',
   labels: {
@@ -19,7 +17,6 @@ export const Users: CollectionConfig = {
     description: `Password policy: ${PASSWORD_POLICY_UI_DESCRIPTION}`,
   },
   auth: {
-    tokenExpiration: tokenExpirationSeconds,
     useSessions: true,
     cookies: {
       sameSite: 'Strict',
