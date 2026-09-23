@@ -8,13 +8,12 @@ import React from 'react'
 import LogoutOnClose from './LogoutOnClose'
 
 import { importMap } from './admin/importMap.js'
+import { isLogoutOnCloseEnabled } from '@/utils/logout-on-close.util'
 import './custom.scss'
 
 type Args = {
   children: React.ReactNode
 }
-
-const logoutOnCloseEnabled = true
 
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
@@ -27,7 +26,7 @@ const serverFunction: ServerFunctionClient = async function (args) {
 
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
-    <LogoutOnClose enabled={logoutOnCloseEnabled} />
+    <LogoutOnClose enabled={isLogoutOnCloseEnabled()} />
     {children}
   </RootLayout>
 )
