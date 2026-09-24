@@ -7,6 +7,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/home/node/app
+      - ./media:/home/node/app/media
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
     command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"

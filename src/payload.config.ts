@@ -21,6 +21,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const useS3Storage = process.env.NODE_ENV === 'production' || process.env.STORAGE_DRIVER === 's3'
 
 export default buildConfig({
   admin: {
@@ -53,11 +54,13 @@ export default buildConfig({
     url: process.env.DATABASE_URI ?? '',
   }),
   sharp,
-  plugins: [
-    s3Storage({
-      collections: { media: true, 'articles-media': true },
-      bucket: process.env.S3_BUCKET_NAME ?? '',
-      config: {},
-    }),
-  ],
+  plugins: useS3Storage
+    ? [
+        s3Storage({
+          collections: { media: true, 'articles-media': true },
+          bucket: process.env.S3_BUCKET_NAME ?? '',
+          config: {},
+        }),
+      ]
+    : [],
 })
