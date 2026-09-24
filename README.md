@@ -34,6 +34,7 @@ Configure the following variables:
 | `SERVICE_USER_EMAIL`               | Email for service account     | `service@example.com`           |
 | `PAYLOAD_TOKEN_EXPIRATION_SECONDS` | Session timeout (seconds)     | `3600` (default: 60 minutes)    |
 | `PAYLOAD_LOGOUT_ON_CLOSE`          | Logout on browser close       | `false` (best-effort only)      |
+| `STORAGE_DRIVER`                   | Upload storage backend        | `local` for development, `s3` for AWS |
 
 ### 3. Run Development Server
 
@@ -61,7 +62,7 @@ Access the admin panel at `http://localhost:3000/admin`
 - **Framework**: Next.js 15.4.7 with React 19
 - **CMS**: Payload CMS 3.64.0
 - **Database**: MongoDB
-- **Storage**: AWS S3 (via @payloadcms/storage-s3)
+- **Storage**: Local filesystem in development, AWS S3 in production
 - **Rich Text Editor**: Lexical
 - **Testing**: Vitest 3.2.3, Playwright 1.56.1
 - **Language**: TypeScript 5.7.3
@@ -205,6 +206,10 @@ pnpm generate:importmap
 ### Environment Variables in Production
 
 Ensure all required environment variables are set in your production environment (`.env.production` or platform-specific secret management).
+
+### Local Upload Storage
+
+Development uses Payload's local filesystem storage by default, so AWS credentials are not required. Files are saved under `media/` and are included in the Docker development volume. Set `STORAGE_DRIVER=s3` only when you intentionally want to test against S3 locally.
 
 ## License
 

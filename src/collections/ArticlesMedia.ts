@@ -1,4 +1,5 @@
 import { APIError, type CollectionConfig } from 'payload'
+import path from 'path'
 import { getAltFromFilename } from '../utils/alt.util'
 
 const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024
@@ -57,5 +58,6 @@ export const ArticlesMedia: CollectionConfig = {
   ],
   upload: {
     mimeTypes: ALLOWED_MIME_TYPES,
+    staticDir: path.resolve(process.cwd(), 'media'),
   },
 }
