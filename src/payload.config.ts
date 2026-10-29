@@ -33,6 +33,15 @@ export default buildConfig({
   },
   collections: [Users, Media, ArticlesMedia, Takwim, Siaran, Categories],
   editor: lexicalEditor(),
+  // Nothing consumes GraphQL: the admin panel, sekolahku-mod-api and
+  // sekolahku-fe all use REST or read MongoDB directly. It never worked
+  // either - Categories.colors stores hex values such as '#10B981', which
+  // are not valid GraphQL enum names, so building the schema threw and every
+  // /api/graphql request returned 500. Disabling it returns a clean 404 and
+  // removes an unused attack surface (see security assessment F-02).
+  graphQL: {
+    disable: true,
+  },
   i18n: {
     translations: {
       en: {

@@ -54,8 +54,8 @@ export const apiKeyStrategy: AuthStrategy = {
       if (serviceUsers.docs.length > 0) {
         return {
           user: {
-            collection: 'users',
             ...serviceUsers.docs[0],
+            collection: 'users',
           },
         }
       }
