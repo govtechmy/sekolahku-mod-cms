@@ -6,6 +6,7 @@ settings:
 
 overrides:
   dompurify: ^3.4.16
+  happy-dom: ^21.0.4
 
 importers:
 
@@ -104,7 +105,7 @@ importers:
         version: 5.1.4(typescript@5.7.3)(vite@7.3.7(@types/node@22.20.5)(sass@1.77.4)(tsx@4.23.15))
       vitest:
         specifier: 3.2.3
-        version: 3.2.3(@types/debug@4.1.13)(@types/node@22.20.5)(happy-dom@20.14.6)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.23.15)
+        version: 3.2.3(@types/debug@4.1.13)(@types/node@22.20.5)(happy-dom@21.0.4)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.23.15)
 
 packages:
 
@@ -2480,8 +2481,8 @@ packages:
     resolution: {integrity: sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
 
-  happy-dom@20.14.6:
-    resolution: {integrity: sha512-5DDsf4QmEIlRL6NkCv/fxSjYHHkZceL/IaYQdJc2h3G7DRTEai++VTjbfL0LB9geW2VrA3+vrjF3Efx+OTtX0Q==}
+  happy-dom@21.0.4:
+    resolution: {integrity: sha512-tFm+GaLBgo6o0awHnvHaNoraVo27qJ+2tZEtZ+cIa08hXbeitrxAJajLI05hsUy/2/YTKcUjQYzHe5mCcraLBw==}
     engines: {node: '>=20.0.0'}
 
   has-bigints@1.1.0:
@@ -3920,7 +3921,7 @@ packages:
       '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
       '@vitest/browser': 3.2.3
       '@vitest/ui': 3.2.3
-      happy-dom: '*'
+      happy-dom: ^21.0.4
       jsdom: '*'
     peerDependenciesMeta:
       '@edge-runtime/vm':
@@ -4903,7 +4904,7 @@ snapshots:
   '@lexical/headless@0.50.0(typescript@5.7.3)':
     dependencies:
       '@lexical/internal': 0.50.0(typescript@5.7.3)
-      happy-dom: 20.14.6
+      happy-dom: 21.0.4
       lexical: 0.50.0(typescript@5.7.3)
     optionalDependencies:
       typescript: 5.7.3
@@ -6778,7 +6779,7 @@ snapshots:
 
   graphql@16.14.2: {}
 
-  happy-dom@20.14.6:
+  happy-dom@21.0.4:
     dependencies:
       '@types/node': 22.20.5
       '@types/whatwg-mimetype': 3.0.2
@@ -8503,7 +8504,7 @@ snapshots:
       sass: 1.77.4
       tsx: 4.23.15
 
-  vitest@3.2.3(@types/debug@4.1.13)(@types/node@22.20.5)(happy-dom@20.14.6)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.23.15):
+  vitest@3.2.3(@types/debug@4.1.13)(@types/node@22.20.5)(happy-dom@21.0.4)(jsdom@26.1.0)(sass@1.77.4)(tsx@4.23.15):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.3
@@ -8531,7 +8532,7 @@ snapshots:
     optionalDependencies:
       '@types/debug': 4.1.13
       '@types/node': 22.20.5
-      happy-dom: 20.14.6
+      happy-dom: 21.0.4
       jsdom: 26.1.0
     transitivePeerDependencies:
       - jiti
